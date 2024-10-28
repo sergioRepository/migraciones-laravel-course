@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pots', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title',500);
             $table->string('slug',500);
@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('content', 100)->nullable();
             $table->string('image', 100)->nullable()->default('text');
             $table->enum('posted', ['yes', 'not'])->nullable()->default('not');
+            $table->foreignId('category_id')->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
-
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pots');
+        Schema::dropIfExists('posts');
     }
 };

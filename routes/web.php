@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Postcontroller;
 use App\Http\Controllers\Primercontroller;
 use Illuminate\Routing\RouteBinding;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,8 @@ Route::get('/test',[Primercontroller::class,'index']);
 Route::get('/test2',[Primercontroller::class,'index2']);
 
 Route::get('post/{var1}/{var2}',[Primercontroller::class,'post']);
+
+Route::resource('post', Postcontroller::class);
 
 //Route::resources('post',[Primercontroller::class])
 
